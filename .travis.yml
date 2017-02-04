@@ -3,7 +3,7 @@ jdk:
   # Install JDK8 for html5 validator.
   - oraclejdk8
 install:
-  - pip install html5validator
+  - pip install --user html5validator
 script:
     ./build
 
