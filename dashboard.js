@@ -86,10 +86,6 @@ dashboardApp.run(function($http) {
     model.humidity = humidityHistory;
     model.latestHumidity = humidityHistory[humidityHistory.length - 1].humidity;
   });
-  $http.get('/reservoirHistory.json').success(function(reservoirHistory) {
-    model.reservoirLevel = reservoirHistory;
-    model.latestReservoirLevel = reservoirHistory[reservoirHistory.length - 1].water_ml;
-  });
   $http.get('/lightHistory.json').success(function(lightHistory) {
     model.lightLevel = lightHistory;
     model.latestLightLevel = lightHistory[lightHistory.length - 1].light_pct;
