@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="dashboardApp">
+<head>
+  <title>GreenPiThumb</title>
+  <script src="/third_party/angular.min.js"></script>
+  <script src="/third_party/d3.v4.min.js"></script>
+  <script src="/dashboard.js"></script>
+  <link rel="stylesheet" type="text/css" href="/third_party/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/third_party/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+<body ng-controller="DashboardCtrl">
+  <h1>GreenPiThumb Dashboard</h1>
+  <table class="table table-hover">
+    <tr>
+      <td>Ambient Temperature</td>
+      <td>{{dashboard.latestTemperature | number:1}}&deg; C</td>
+    </tr>
+    <tr>
+      <td>Ambient Humidity</td>
+      <td>{{dashboard.latestHumidity | number:1}}</td>
+    </tr>
+    <tr>
+      <td>Ambient Light</td>
+      <td>{{dashboard.latestLightLevel | number:1}}%</td>
+    </tr>
+    <tr>
+      <td>Soil Moisture</td>
+      <td>{{dashboard.latestSoilMoisture | number:1}}</td>
+    </tr>
+  </table>
+  <h2>Temperature</h2>
+  <line-graph chart-data="dashboard.temperature" value-property="temperature"></line-graph>
+  <h2>Ambient Humidity</h2>
+  <line-graph chart-data="dashboard.humidity" value-property="humidity"></line-graph>
+  <h2>Ambient Light</h2>
+  <line-graph chart-data="dashboard.lightLevel" value-property="light_pct"></line-graph>
+  <h2>Soil Moisture</h2>
+  <line-graph chart-data="dashboard.soilMoisture" value-property="moisture"></line-graph>
+</body>
+</html>

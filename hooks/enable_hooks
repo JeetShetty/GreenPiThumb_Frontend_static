@@ -1,0 +1,3 @@
+#!/bin/bash
+# Enables git hooks in the local environment.
+rm -rf .git/hooks/ && ln -s -f ../hooks .git/hooks
