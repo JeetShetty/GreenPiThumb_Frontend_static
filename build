@@ -4,6 +4,6 @@
 set -e
 
 html5validator \
-  --root ./ \
+  --root ./src \
   --ignore-re 'Attribute "ng-[a-z-]+" not allowed' \
   --ignore 'Element "line-graph" not allowed'
