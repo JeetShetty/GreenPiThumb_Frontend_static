@@ -30,7 +30,6 @@
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
     "lint": "jshint app && jscs app",
-    "travis": "npm run lint && npm run test-single-run",
-    "validate": "html-validator http://localhost:8000/"
+    "travis": "npm run lint && npm run test-single-run"
   }
 }
