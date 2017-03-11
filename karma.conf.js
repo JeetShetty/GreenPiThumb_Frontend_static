@@ -22,7 +22,7 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-      'app/*.js': ['coverage']
+      'app/**/*.js': ['coverage']
     },
 
     reporters: ['progress', 'coverage'],
