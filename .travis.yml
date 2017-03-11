@@ -26,8 +26,7 @@ install:
   - npm config set spin false
   - npm install
   - pip install --user html5validator
-script:
-  - ./build
-after_script: |
-    cat coverage/*/lcov.info \
+script: |
+  ./build \
+  && cat coverage/*/lcov.info \
       | ./node_modules/coveralls/bin/coveralls.js
