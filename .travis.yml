@@ -28,6 +28,6 @@ install:
   - pip install --user html5validator
 script:
   - ./build
-after_success: |
+after_script: |
     cat coverage/*/lcov.info \
       | ./node_modules/coveralls/bin/coveralls.js
