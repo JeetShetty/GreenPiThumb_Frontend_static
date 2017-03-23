@@ -24,12 +24,12 @@ greenPiThumbApp.run(function($http) {
   $http.get('/lightHistory.json').success(function(lightHistory) {
     model.lightLevel = lightHistory;
     model.latestLightLevel =
-      lightHistory[lightHistory.length - 1].lightPercentage;
+      lightHistory[lightHistory.length - 1].ambient_light;
   });
   $http.get('/soilMoistureHistory.json').success(function(moistureHistory) {
     model.soilMoisture = moistureHistory;
     model.latestSoilMoisture =
-      moistureHistory[moistureHistory.length - 1].moisture;
+      moistureHistory[moistureHistory.length - 1].soil_moisture;
   });
 });
 
