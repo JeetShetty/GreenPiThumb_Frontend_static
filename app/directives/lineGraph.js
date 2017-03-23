@@ -14,7 +14,7 @@ angular.module('greenPiThumbApp.directives')
           var height = 450 - margin.top - margin.bottom;
 
           // Parse the date / time
-          var parseDate = d3.utcParse('%Y%m%dT%H:%M:%SZ');
+          var parseDate = d3.utcParse('%Y%m%dT%H%M%S%Z');
 
           // Set the ranges
           var x = d3.scaleTime().range([0, width]);
@@ -66,6 +66,10 @@ angular.module('greenPiThumbApp.directives')
               .attr('class', 'y axis')
               .call(yAxis);
           };
+          scope.$watch('data', function(newValue) {
+            if (!newValue) { return; }
+            updateGraph(newValue);
+          });
 
           scope.$watch('data', updateGraph);
         });
