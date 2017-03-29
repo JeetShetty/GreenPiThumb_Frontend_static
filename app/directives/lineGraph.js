@@ -70,8 +70,6 @@ angular.module('greenPiThumbApp.directives')
             if (!newValue) { return; }
             updateGraph(newValue);
           });
-
-          scope.$watch('data', updateGraph);
         });
       }
     };
