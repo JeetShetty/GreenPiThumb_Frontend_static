@@ -9,6 +9,9 @@ tmp
 
 npm-debug.log
 
+# Images are not under source control.
+app/images/
+
 # Ignore vim temp files.
 *.swp
 *.swo
