@@ -14,7 +14,7 @@ angular.module('greenPiThumbApp.directives')
           var height = 450 - margin.top - margin.bottom;
 
           // Parse the date / time
-          var parseDate = d3.utcParse('%Y%m%dT%H%M%S%Z');
+          var parseTimestamp = d3.utcParse('%Y%m%dT%H%M%Z');
 
           // Set the ranges
           var x = d3.scaleTime().range([0, width]);
@@ -33,7 +33,7 @@ angular.module('greenPiThumbApp.directives')
 
           var updateGraph = function(data) {
             data.forEach(function(d) {
-              d.timestamp = parseDate(d.timestamp);
+              d.timestamp = parseTimestamp(d.timestamp);
               d.value = scope.$eval(attrs.valueProperty, d);
             });
 
