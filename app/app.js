@@ -16,7 +16,7 @@ greenPiThumbApp.run(function($http) {
       temperatureHistory[temperatureHistory.length - 1].temperature;
     model.temperature = temperatureHistory;
   });
-  $http.get('/ambientHumidityHistory.json').success(function(humidityHistory) {
+  $http.get('/humidityHistory.json').success(function(humidityHistory) {
     model.humidity = humidityHistory;
     model.latestHumidity =
       humidityHistory[humidityHistory.length - 1].humidity;
@@ -24,7 +24,7 @@ greenPiThumbApp.run(function($http) {
   $http.get('/lightHistory.json').success(function(lightHistory) {
     model.lightLevel = lightHistory;
     model.latestLightLevel =
-      lightHistory[lightHistory.length - 1].ambient_light;
+      lightHistory[lightHistory.length - 1].light;
   });
   $http.get('/soilMoistureHistory.json').success(function(moistureHistory) {
     model.soilMoisture = moistureHistory;
