@@ -31,13 +31,13 @@ angular.module('greenPiThumbApp.directives')
             .y(function(d) { return y(d.value); });
 
           // Define the div for the tooltip.
-          var div = d3.select("body").append("div")
-            .attr("class", "tooltip")
-            .style("opacity", 0);
+          var div = d3.select('body').append('div')
+            .attr('class', 'tooltip')
+            .style('opacity', 0);
 
           // Format the time and values for the tooltip.
-          var formatTime = d3.timeFormat("%I:%M %p");
-          var formatValue = d3.format(".1f");
+          var formatTime = d3.timeFormat('%I:%M %p');
+          var formatValue = d3.format('.1f');
 
           var updateGraph = function(data) {
             data.forEach(function(d) {
@@ -64,25 +64,25 @@ angular.module('greenPiThumbApp.directives')
               .attr('d', valueline(data));
 
             // Add the scatterplot for tooltips.
-            svg.selectAll("dot")
-                .data(data)
-            .enter().append("circle")
-                .attr("r", 2)
-                .attr("cx", function(d) { return x(d.timestamp); })
-                .attr("cy", function(d) { return y(d.value); })
-                .on("mouseover", function(d) {
+            svg.selectAll('dot')
+              .data(data)
+            .enter().append('circle')
+              .attr('r', 2)
+              .attr('cx', function(d) { return x(d.timestamp); })
+              .attr('cy', function(d) { return y(d.value); })
+              .on('mouseover', function(d) {
                     div.transition()
-                        .duration(200)
-                        .style("opacity", 0.9);
+                      .duration(200)
+                      .style('opacity', 0.9);
                     div.html(
-                      formatValue(d.value) + "<br />" + formatTime(d.timestamp))
-                        .style("left", (d3.event.pageX + 3) + "px")
-                        .style("top", (d3.event.pageY - 42) + "px");
-                    })
-                .on("mouseout", function(d) {
-                    div.transition()
-                        .duration(500)
-                        .style("opacity", 0);
+                      formatValue(d.value) + '<br />' + formatTime(d.timestamp))
+                      .style('left', (d3.event.pageX + 3) + 'px')
+                      .style('top', (d3.event.pageY - 42) + 'px');
+                  })
+                .on('mouseout', function(d) {
+                  div.transition()
+                    .duration(500)
+                    .style('opacity', 0);
                 });
 
             // Add the X Axis
