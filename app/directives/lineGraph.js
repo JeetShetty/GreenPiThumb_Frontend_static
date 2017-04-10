@@ -73,7 +73,7 @@ angular.module('greenPiThumbApp.directives')
                 .on("mouseover", function(d) {
                     div.transition()
                         .duration(200)
-                        .style("opacity", .9);
+                        .style("opacity", 0.9);
                     div.html(
                       formatValue(d.value) + "<br />" + formatTime(d.timestamp))
                         .style("left", (d3.event.pageX + 3) + "px")
