@@ -36,3 +36,16 @@ path {
     stroke-width: 1;
     shape-rendering: crispEdges;
 }
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 75px;
+    height: 38px;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
