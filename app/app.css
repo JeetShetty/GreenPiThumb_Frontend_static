@@ -1,6 +1,6 @@
 .chart {
-    background: #eee;
-    padding: 3px;
+  background: #eee;
+  padding: 3px;
 }
 
 .chart div {
@@ -20,32 +20,33 @@
   box-shadow: 2px 2px 2px #666;
 }
 
-
-body { font: 12px Arial;}
+body {
+  font: 12px Arial;
+}
 
 path {
-    stroke: steelblue;
-    stroke-width: 2;
-    fill: none;
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
 }
 
 .axis path,
 .axis line {
-    fill: none;
-    stroke: grey;
-    stroke-width: 1;
-    shape-rendering: crispEdges;
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
 }
 
 div.tooltip {
-    position: absolute;
-    text-align: center;
-    width: 75px;
-    height: 38px;
-    padding: 5px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
-    border: 0px;
-    border-radius: 8px;
-    pointer-events: none;
+  position: absolute;
+  text-align: center;
+  width: 75px;
+  height: 38px;
+  padding: 5px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
 }

@@ -14,3 +14,14 @@ html5validator \
   --ignore-re 'Attribute "ng-[a-z-]+" not allowed' \
   --ignore 'Element "line-graph" not allowed' \
   --log INFO
+
+CSS_FILE=app/app.css
+CSS_BEAUTIFIED=$(mktemp)
+# Beautify the CSS, but strip the first line because cssbeautify prints the
+# filename in the output file.
+cssbeautify-cli \
+  --file "${CSS_FILE}" \
+  --indent 2 \
+  | tail -n +2 \
+  > "${CSS_BEAUTIFIED}"
+diff "${CSS_FILE}" "${CSS_BEAUTIFIED}"
