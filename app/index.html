@@ -32,6 +32,16 @@
       <td>{{ latestSoilMoisture | number:0 }}</td>
     </tr>
   </table>
+  <div class="cameraImage">
+    <a ng-href="{{ images[currentImage].filename }}" target="_blank">
+      <img class="img-responsive" ng-src="{{ images[currentImage].filename }}" src="#" alt="GreenPiThumb camera image" />
+    </a>
+    <p>
+      {{ images[currentImage].timestamp | date: 'yyyy-MM-dd h:mm:ss a' }}<br />
+      ({{ currentImage + 1 }} of {{ images.length }})</p>
+    <button class="btn btn-default" ng-click="previousImage()">Previous</button>
+    <button class="btn btn-default" ng-click="nextImage()">Next</button>
+  </div>
   <h2>Temperature</h2>
   <line-graph chart-data="temperature" value-property="temperature"></line-graph>
   <h2>Ambient Humidity</h2>

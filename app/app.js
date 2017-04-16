@@ -29,4 +29,34 @@ greenPiThumbApp.controller('DashboardCtrl', function($scope, $http) {
     $scope.latestSoilMoisture =
       moistureHistory[moistureHistory.length - 1].soil_moisture;
   });
+  $http.get('/images.json').success(function(images) {
+    $scope.images = [];
+    images.forEach(function(image) {
+      $scope.images.push({
+        'timestamp': image.timestamp,
+        'filename': 'images/' + image.filename
+      });
+    });
+    $scope.images.sort(function(a, b) {
+      if (a.timestamp < b.timestamp) {
+        return -1;
+      }
+      if (a.timestamp > b.timestamp) {
+        return 1;
+      }
+      return 0;
+    });
+    $scope.currentImage = $scope.images.length - 1;
+  });
+
+  $scope.previousImage = function() {
+    $scope.currentImage -= 1;
+    if ($scope.currentImage < 0) {
+      $scope.currentImage = $scope.images.length - 1;
+    }
+  };
+
+  $scope.nextImage = function() {
+    $scope.currentImage = ($scope.currentImage + 1) % $scope.images.length;
+  };
 });
