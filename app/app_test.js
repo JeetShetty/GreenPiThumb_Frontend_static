@@ -44,7 +44,7 @@ describe('greenPiThumbApp controller', function() {
     backend.flush();
   }));
 
-  it('makes all expected AJAX requestse', function() {
+  it('makes all expected AJAX requests', function() {
     backend.verifyNoOutstandingExpectation();
   });
 
