@@ -12,7 +12,7 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/d3/d3.js',
-      'app.js',
+      '*.js',
       'components/**/*.js',
       'services/**/*.js',
       'directives/**/*.js'

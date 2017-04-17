@@ -17,29 +17,29 @@
   <table class="table table-hover">
     <tr>
       <td>Ambient Temperature</td>
-      <td>{{dashboard.latestTemperature | number:1}}&deg; C</td>
+      <td>{{ latestTemperature | number:1 }}&deg; C</td>
     </tr>
     <tr>
       <td>Ambient Humidity</td>
-      <td>{{dashboard.latestHumidity | number:0}}</td>
+      <td>{{ latestHumidity | number:0 }}</td>
     </tr>
     <tr>
       <td>Ambient Light</td>
-      <td>{{dashboard.latestLightLevel | number:1}}%</td>
+      <td>{{ latestLightLevel | number:1 }}%</td>
     </tr>
     <tr>
       <td>Soil Moisture</td>
-      <td>{{dashboard.latestSoilMoisture | number:0}}</td>
+      <td>{{ latestSoilMoisture | number:0 }}</td>
     </tr>
   </table>
   <h2>Temperature</h2>
-  <line-graph chart-data="dashboard.temperature" value-property="temperature"></line-graph>
+  <line-graph chart-data="temperature" value-property="temperature"></line-graph>
   <h2>Ambient Humidity</h2>
-  <line-graph chart-data="dashboard.humidity" value-property="humidity"></line-graph>
+  <line-graph chart-data="humidity" value-property="humidity"></line-graph>
   <h2>Ambient Light</h2>
-  <line-graph chart-data="dashboard.lightLevel" value-property="light"></line-graph>
+  <line-graph chart-data="lightLevel" value-property="light"></line-graph>
   <h2>Soil Moisture</h2>
-  <line-graph chart-data="dashboard.soilMoisture" value-property="soil_moisture"></line-graph>
+  <line-graph chart-data="soilMoisture" value-property="soil_moisture"></line-graph>
   <small class="clearfix">{{ 'GreenPiThumb Frontend version %VERSION%' | interpolate }}</small>
   <script src="bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
