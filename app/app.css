@@ -50,3 +50,8 @@ div.tooltip {
   border-radius: 8px;
   pointer-events: none;
 }
+
+div.cameraImage {
+  width: 65%;
+  margin-left: 15px;
+}

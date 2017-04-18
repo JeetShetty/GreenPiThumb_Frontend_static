@@ -33,6 +33,12 @@ describe('greenPiThumbApp controller', function() {
         {'timestamp': '20170408T1330Z', 'soil_moisture': 888.1},
         {'timestamp': '20170408T1345Z', 'soil_moisture': 888.2}
       ]);
+    backend.expect('GET', '/images.json').respond(
+      [
+        {'timestamp': '20170408T1315Z', 'filename': '2017-04-08T1315Z.jpg'},
+        {'timestamp': '20170408T1330Z', 'filename': '2017-04-08T1330Z.jpg'},
+        {'timestamp': '20170408T1345Z', 'filename': '2017-04-08T1355Z.jpg'}
+      ]);
   }));
 
   beforeEach(angular.mock.inject(function($controller, $rootScope, $http) {
@@ -60,5 +66,25 @@ describe('greenPiThumbApp controller', function() {
     expect(mockScope.humidity).toBeDefined();
     expect(mockScope.lightLevel).toBeDefined();
     expect(mockScope.soilMoisture).toBeDefined();
+  });
+
+  it('initializes currentImage correctly', function() {
+    expect(mockScope.currentImage).toEqual(2);
+  });
+
+  it('cycles images forward correctly', function() {
+    mockScope.nextImage();
+    expect(mockScope.currentImage).toEqual(0);
+    mockScope.nextImage();
+    expect(mockScope.currentImage).toEqual(1);
+  });
+
+  it('cycles images backward correctly', function() {
+    mockScope.previousImage();
+    expect(mockScope.currentImage).toEqual(1);
+    mockScope.previousImage();
+    expect(mockScope.currentImage).toEqual(0);
+    mockScope.previousImage();
+    expect(mockScope.currentImage).toEqual(2);
   });
 });
