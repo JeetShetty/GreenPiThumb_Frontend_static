@@ -12,45 +12,76 @@
   <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="app.css">
 </head>
-<body ng-controller="DashboardCtrl">
-  <h1>GreenPiThumb Dashboard</h1>
-  <table class="table table-hover">
-    <tr>
-      <td>Ambient Temperature</td>
-      <td>{{ latestTemperature | number:1 }}&deg; C</td>
-    </tr>
-    <tr>
-      <td>Ambient Humidity</td>
-      <td>{{ latestHumidity | number:0 }}</td>
-    </tr>
-    <tr>
-      <td>Ambient Light</td>
-      <td>{{ latestLightLevel | number:1 }}%</td>
-    </tr>
-    <tr>
-      <td>Soil Moisture</td>
-      <td>{{ latestSoilMoisture | number:0 }}</td>
-    </tr>
-  </table>
-  <div class="cameraImage">
-    <a ng-href="{{ images[currentImage].filename }}" target="_blank">
-      <img class="img-responsive" ng-src="{{ images[currentImage].filename }}" src="#" alt="GreenPiThumb camera image" />
-    </a>
-    <p>
-      {{ images[currentImage].timestamp | date: 'yyyy-MM-dd h:mm:ss a' }}<br />
-      ({{ currentImage + 1 }} of {{ images.length }})</p>
-    <button class="btn btn-default" ng-click="previousImage()">Previous</button>
-    <button class="btn btn-default" ng-click="nextImage()">Next</button>
-  </div>
-  <h2>Temperature</h2>
-  <line-graph chart-data="temperature" value-property="temperature"></line-graph>
-  <h2>Ambient Humidity</h2>
-  <line-graph chart-data="humidity" value-property="humidity"></line-graph>
-  <h2>Ambient Light</h2>
-  <line-graph chart-data="lightLevel" value-property="light"></line-graph>
-  <h2>Soil Moisture</h2>
-  <line-graph chart-data="soilMoisture" value-property="soil_moisture"></line-graph>
-  <small class="clearfix">{{ 'GreenPiThumb Frontend version %VERSION%' | interpolate }}</small>
+<body ng-controller="DashboardCtrl" data-spy="scroll" data-target="spy-scroll-id">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">GreenPiThumb</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">Current Readings</a></li>
+          <li><a href="#camera">Camera</a></li>
+          <li><a href="#history">History</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <h1>Current Readings</h1>
+      <table class="table table-hover">
+        <tr>
+          <td>Ambient Temperature</td>
+          <td>{{ latestTemperature | number:1 }}&deg; C</td>
+        </tr>
+        <tr>
+          <td>Ambient Humidity</td>
+          <td>{{ latestHumidity | number:0 }}</td>
+        </tr>
+        <tr>
+          <td>Ambient Light</td>
+          <td>{{ latestLightLevel | number:1 }}%</td>
+        </tr>
+        <tr>
+          <td>Soil Moisture</td>
+          <td>{{ latestSoilMoisture | number:0 }}</td>
+        </tr>
+      </table>
+      <div class="row cameraImage" id="camera">
+        <a ng-href="{{ images[currentImage].filename }}" target="_blank">
+          <img class="img-responsive" ng-src="{{ images[currentImage].filename }}" src="#" alt="GreenPiThumb camera image" />
+        </a>
+        <p>
+          {{ images[currentImage].timestamp | date: 'yyyy-MM-dd h:mm:ss a' }}<br />
+          ({{ currentImage + 1 }} of {{ images.length }})</p>
+        <button class="btn btn-default" ng-click="previousImage()">Previous</button>
+        <button class="btn btn-default" ng-click="nextImage()">Next</button>
+      </div>
+    </div>
+    <div class="row" id="history">
+      <h1>History</h1>
+      <h3>Temperature</h3>
+      <line-graph chart-data="temperature" value-property="temperature"></line-graph>
+      <h3>Ambient Humidity</h3>
+      <line-graph chart-data="humidity" value-property="humidity"></line-graph>
+      <h3>Ambient Light</h3>
+      <line-graph chart-data="lightLevel" value-property="light"></line-graph>
+      <h3>Soil Moisture</h3>
+      <line-graph chart-data="soilMoisture" value-property="soil_moisture"></line-graph>
+    </div>
+    <div class="row" id="about">
+      <h1>About</h1>
+      <small class="clearfix">{{ 'GreenPiThumb Frontend version %VERSION%' | interpolate }}</small>
+    </div>
+  </div> <!-- /container -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
   <script src="services/d3.js"></script>
