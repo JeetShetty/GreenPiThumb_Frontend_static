@@ -52,6 +52,5 @@ div.tooltip {
 }
 
 div.cameraImage {
-  max-width: 800px;
-  margin: 15px 5px;
+  max-width: 1024px;
 }
