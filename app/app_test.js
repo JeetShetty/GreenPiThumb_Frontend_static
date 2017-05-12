@@ -72,11 +72,27 @@ describe('greenPiThumbApp controller', function() {
     expect(mockScope.currentImage).toEqual(2);
   });
 
+  it('jumps to end-boundary image', function() {
+    mockScope.firstImage();
+    expect(mockScope.currentImage).toEqual(0);
+    mockScope.firstImage();
+    expect(mockScope.currentImage).toEqual(0);
+    mockScope.lastImage();
+    expect(mockScope.currentImage).toEqual(2);
+    mockScope.lastImage();
+    expect(mockScope.currentImage).toEqual(2);
+  });
+
   it('cycles images forward correctly', function() {
-    mockScope.nextImage();
+    mockScope.firstImage();
     expect(mockScope.currentImage).toEqual(0);
     mockScope.nextImage();
     expect(mockScope.currentImage).toEqual(1);
+    mockScope.nextImage();
+    expect(mockScope.currentImage).toEqual(2);
+    // Can't go past the end.
+    mockScope.nextImage();
+    expect(mockScope.currentImage).toEqual(2);
   });
 
   it('cycles images backward correctly', function() {
@@ -84,7 +100,8 @@ describe('greenPiThumbApp controller', function() {
     expect(mockScope.currentImage).toEqual(1);
     mockScope.previousImage();
     expect(mockScope.currentImage).toEqual(0);
+    // Can't go before first image.
     mockScope.previousImage();
-    expect(mockScope.currentImage).toEqual(2);
+    expect(mockScope.currentImage).toEqual(0);
   });
 });
