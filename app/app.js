@@ -49,14 +49,20 @@ greenPiThumbApp.controller('DashboardCtrl', function($scope, $http) {
     $scope.currentImage = $scope.images.length - 1;
   });
 
+  $scope.firstImage = function() {
+    $scope.currentImage = 0;
+  };
+
   $scope.previousImage = function() {
-    $scope.currentImage -= 1;
-    if ($scope.currentImage < 0) {
-      $scope.currentImage = $scope.images.length - 1;
-    }
+    $scope.currentImage = Math.max(0, $scope.currentImage - 1);
   };
 
   $scope.nextImage = function() {
-    $scope.currentImage = ($scope.currentImage + 1) % $scope.images.length;
+    $scope.currentImage = Math.min(($scope.currentImage + 1),
+                                   ($scope.images.length - 1));
+  };
+
+  $scope.lastImage = function() {
+    $scope.currentImage = $scope.images.length - 1;
   };
 });
