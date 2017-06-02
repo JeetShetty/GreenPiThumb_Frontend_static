@@ -38,6 +38,7 @@ angular.module('greenPiThumbApp.directives')
           // Format the time and values for the tooltip.
           var formatTime = d3.timeFormat('%I:%M %p');
           var formatValue = d3.format('.1f');
+          var formatDate = d3.timeFormat('%Y-%m-%d');
 
           var updateGraph = function(data) {
             data.forEach(function(d) {
@@ -56,7 +57,10 @@ angular.module('greenPiThumbApp.directives')
 
             // Scale the range of the data
             x.domain(d3.extent(data, function(d) { return d.timestamp; }));
-            y.domain([0, d3.max(data, function(d) { return d.value; })]);
+            y.domain([
+              d3.min(data, function(d) { return d.value; }),
+              d3.max(data, function(d) { return d.value; })
+            ]);
 
             // Add the valueline path.
             svg.append('path')
@@ -75,9 +79,11 @@ angular.module('greenPiThumbApp.directives')
                       .duration(200)
                       .style('opacity', 0.9);
                     div.html(
-                      formatValue(d.value) + '<br />' + formatTime(d.timestamp))
+                      formatValue(d.value) + '<br />' +
+                      formatTime(d.timestamp) + '<br />' +
+                      formatDate(d.timestamp))
                       .style('left', (d3.event.pageX + 3) + 'px')
-                      .style('top', (d3.event.pageY - 42) + 'px');
+                      .style('top', (d3.event.pageY - 52) + 'px');
                   })
                 .on('mouseout', function(d) {
                   div.transition()
