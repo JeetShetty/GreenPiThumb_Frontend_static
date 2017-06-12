@@ -25,9 +25,16 @@ greenPiThumbApp.controller('DashboardCtrl', function($scope, $http) {
       lightHistory[lightHistory.length - 1].light;
   });
   $http.get('/soilMoistureHistory.json').success(function(moistureHistory) {
-    $scope.soilMoisture = moistureHistory;
+    // Convert raw soil moisture readings into a percentage (out of 1023).
+    $scope.soilMoisture = [];
+    moistureHistory.forEach(function(record) {
+      $scope.soilMoisture.push({
+        moisture: (record.soil_moisture / 1023.0) * 100.0,
+        timestamp: record.timestamp
+      });
+    });
     $scope.latestSoilMoisture =
-      moistureHistory[moistureHistory.length - 1].soil_moisture;
+      $scope.soilMoisture[$scope.soilMoisture.length - 1].moisture;
   });
   $http.get('/images.json').success(function(images) {
     $scope.images = [];
