@@ -52,7 +52,7 @@
         </tr>
         <tr>
           <td>Soil Moisture</td>
-          <td>{{ latestSoilMoisture | number:0 }}</td>
+          <td>{{ latestSoilMoisture | number:1 }}%</td>
         </tr>
       </table>
       <div class="row cameraImage" id="camera">
@@ -89,7 +89,7 @@
       <h3>Ambient Light</h3>
       <line-graph chart-data="lightLevel" value-property="light"></line-graph>
       <h3>Soil Moisture</h3>
-      <line-graph chart-data="soilMoisture" value-property="soil_moisture"></line-graph>
+      <line-graph chart-data="soilMoisture" value-property="moisture"></line-graph>
     </div>
     <div class="row" id="about">
       <h1>About</h1>

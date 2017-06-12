@@ -58,7 +58,7 @@ describe('greenPiThumbApp controller', function() {
     expect(mockScope.latestTemperature).toEqual(25.0);
     expect(mockScope.latestHumidity).toEqual(53.0);
     expect(mockScope.latestLightLevel).toEqual(66.3);
-    expect(mockScope.latestSoilMoisture).toEqual(888.2);
+    expect(mockScope.latestSoilMoisture).toBeCloseTo(86.8, 1);
   });
 
   it('Creates full history variables', function() {
